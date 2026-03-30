@@ -24,7 +24,7 @@ class BMEControl(object):
             print(data)
             self.client.send(str(data))
             # Send data to server
-            time.sleep(2)
+            time.sleep(10)
 
 if  __name__ == "__main__":
     host = '192.168.3.150'

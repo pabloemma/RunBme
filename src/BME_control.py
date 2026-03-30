@@ -9,7 +9,7 @@ import ReadBme as RB
 class BMEControl(object):
     def __init__(self):
         self.bme = RB.ReadBme()
-        self.client = MY.MyClient()
+        #self.client = MY.MyClient()
 
 
     def run(self):

@@ -23,7 +23,7 @@ class MyClient(object):
 
 
 if __name__ == "__main__":
-    client = MyClient('192.168.3.201', 9378)
+    client = MyClient('localhost', 9378)
     client.connect()
     client.send("Hello, Server!")
     client.close()

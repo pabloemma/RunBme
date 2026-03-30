@@ -7,9 +7,12 @@ import MyClient as MY
 import ReadBme as RB
 
 class BMEControl(object):
-    def __init__(self,host = 'localhost', port = 9378):
+    def __init__(self,host = '192.168.3.150', port = 9378):
+        self.host = host
+        self.port = port
+
         self.bme = RB.ReadBme()
-        self.client = MY.MyClient()
+        self.client = MY.MyClient(host=self.host)
         self.client.connect()#setup connection to server
 
 

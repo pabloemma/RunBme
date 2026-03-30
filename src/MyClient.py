@@ -3,7 +3,7 @@
 import socket
 
 class MyClient(object):
-    def __init__(self, host=host, port=port):
+    def __init__(self, host='localhost', port=9378):
         self.host = host
         self.port = port
         self.sock = None

@@ -22,10 +22,10 @@ class BMEControl(object):
         while True:
             data = self.bme.read_short()
             print(data)
-            self.client.send('happy hour')
-            #self.client.send(str(data))
+            #self.client.send('happy hour')
+            self.client.send(str(data))
             # Send data to server
-            time.sleep(10)
+            time.sleep(1)
 
 if  __name__ == "__main__":
     host = '192.168.3.150'

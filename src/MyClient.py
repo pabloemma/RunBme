@@ -3,7 +3,7 @@
 import socket
 
 class MyClient(object):
-    def __init__(self, host, port):
+    def __init__(self, host=host, port=port):
         self.host = host
         self.port = port
         self.sock = None
@@ -23,7 +23,9 @@ class MyClient(object):
 
 
 if __name__ == "__main__":
-    client = MyClient('localhost', 9378)
+    port = 9378
+    host = '192.168.3.150'
+    client = MyClient(host=host, port=port)
     client.connect()
     client.send("Hello, Server!")
     client.close()

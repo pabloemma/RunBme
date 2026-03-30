@@ -25,7 +25,7 @@ class MyServer(object):
             print(f"Connection from {addr}")
             data = conn.recv(1024).decode('utf-8')
             print(f"Received data: {data}")
-            #conn.close()
+            conn.close()
 
 if __name__ == "__main__":
     host = socket.gethostname()

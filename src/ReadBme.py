@@ -30,6 +30,12 @@ class ReadBme(object):
 
             time.sleep(2)
 
+        #return {
+        #    "temperature": self.bme280.temperature,
+        #    "humidity": self.bme280.relative_humidity,
+        #   "pressure": self.bme280.pressure,
+        #    "altitude": self.bme280.altitude
+        #}
 
     def read_short(self):
         return {

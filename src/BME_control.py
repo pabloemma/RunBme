@@ -6,8 +6,8 @@ import time
 import MyClient as MY
 import ReadBme as RB
 
-class BMEControl(object,host = 'localhost', port = 9378):
-    def __init__(self):
+class BMEControl(object):
+    def __init__(self,host = 'localhost', port = 9378):
         self.bme = RB.ReadBme()
         self.client = MY.MyClient()
         self.client.connect()#setup connection to server

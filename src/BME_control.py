@@ -15,7 +15,7 @@ class BMEControl(object):
     def run(self):
         while True:
             data = self.bme.read_short()
-            print
+            print(data)
             # Send data to server
             time.sleep(2)
 

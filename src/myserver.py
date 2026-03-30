@@ -1,0 +1,33 @@
+# tis is the listener for the humidity sensor
+# ak march 2026
+
+
+
+import socket #get the socket library
+
+
+class MyServer(object):
+
+
+    def __init__(self, host='localhost', port=5000):
+        
+        
+        self.host = host
+        self.port = port
+        self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.sock.bind((self.host, self.port))
+        self.sock.listen(1)
+        print(f"Server listening on {self.host}:{self.port}")
+
+    def start(self):
+        while True:
+            conn, addr = self.sock.accept()
+            print(f"Connection from {addr}")
+            data = conn.recv(1024).decode('utf-8')
+            print(f"Received data: {data}")
+            conn.close()
+
+if __name__ == "__main__":
+    host = socket.gethostname()
+    server = MyServer(host=host, port=9378)
+    server.start()

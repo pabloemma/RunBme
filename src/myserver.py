@@ -29,5 +29,5 @@ class MyServer(object):
 
 if __name__ == "__main__":
     host = socket.gethostname()
-    server = MyServer(host=host, port=9378)
+    server = MyServer(host='192.168.3.150', port=9378)
     server.start()

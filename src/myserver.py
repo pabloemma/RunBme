@@ -6,7 +6,7 @@
 import socket #get the socket library
 import ast  
 
-DEBUG = False
+DEBUG = True
 class MyServer(object):
 
 

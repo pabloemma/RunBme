@@ -23,7 +23,7 @@ class BMEControl(object):
             data = self.bme.read_short()
             print(data)
             #self.client.send('happy hour')
-            self.client.connect((self.host, self.port))
+            self.client.connect()
             self.client.send(str(data))
             # Send data to server
             time.sleep(1)

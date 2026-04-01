@@ -27,5 +27,5 @@ if __name__ == "__main__":
     host = '192.168.3.150'
     client = MyClient(host=host, port=port)
     client.connect()
-    client.send("Hello, Server!")
+    #client.send("Hello, Server!")
     client.close()

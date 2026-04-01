@@ -21,7 +21,7 @@ class BMEControl(object):
     def run(self):
         while True:
             data = self.bme.read_short()
-            print(data)
+            #print(data)
             #self.client.send('happy hour')
             self.client.connect()
             self.client.send(str(data))

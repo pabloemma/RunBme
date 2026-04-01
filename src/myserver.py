@@ -4,8 +4,9 @@
 
 
 import socket #get the socket library
+import ast  
 
-
+DEBUG = False
 class MyServer(object):
 
 
@@ -22,9 +23,20 @@ class MyServer(object):
     def start(self):
         while True:
             conn, addr = self.sock.accept()
-            print(f"Connection from {addr}")
+            if(DEBUG):
+                print(f"Connection from {addr}")
             data = conn.recv(1024).decode('utf-8')
-            print(f"Received data: {data}")
+            if(DEBUG):
+                print(f"Received data: {data}")
+            # Evaluate the received data as a Python literal
+            try:
+                self.mydata = ast.literal_eval(data)
+                if(DEBUG):
+                    print(f"Evaluated data: {self.mydata}")
+            except (ValueError, SyntaxError):
+                print("Received invalid data")
+
+
             conn.close()
 
 if __name__ == "__main__":

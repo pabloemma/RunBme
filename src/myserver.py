@@ -5,16 +5,32 @@
 
 import socket #get the socket library
 import ast  
+import SetupBME as S_BME
+import CreatePandas as C_Pandas
 
-DEBUG = False
+
 class MyServer(object):
 
 
     def __init__(self, host='localhost', port=5000):
         
+
+        # get configuration file
+        self.config = S_BME.SetupBME()
+        self.config.get_config()
+
+        #setup Pandas
+        self.pandas_ak = C_Pandas.MyPandas(column_names = self.config.column_names, output_dir = self.config.output_dir)
+        self.pandas_ak.CreateFileName()
+        self.pandas_ak.CreateFrame()
+
+
+                               
         
-        self.host = host
-        self.port = port
+        self.host = self.config.server_ip
+        self.port = self.config.server_port
+        self.DEBUG = self.config.DEBUG
+
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.sock.bind((self.host, self.port))
         self.sock.listen(1)
@@ -23,16 +39,19 @@ class MyServer(object):
     def start(self):
         while True:
             conn, addr = self.sock.accept()
-            if(DEBUG):
+            if(self.DEBUG):
                 print(f"Connection from {addr}")
             data = conn.recv(1024).decode('utf-8')
-            if(DEBUG):
+            if(self.DEBUG):
                 print(f"Received data: {data}")
             # Evaluate the received data as a Python literal
             try:
                 self.mydata = ast.literal_eval(data)
-                if(DEBUG):
+                if(self.DEBUG):
                     print(f"Evaluated data: {self.mydata}")
+                    self.pandas_ak.AddData(self.mydata) 
+
+                    
             except (ValueError, SyntaxError):
                 print("Received invalid data")
 

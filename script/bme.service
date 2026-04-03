@@ -1,5 +1,9 @@
 [Unit]
-Description = BME control
+Description=BME control
 
 [Service]
-ExecStart =
+ExecStart=/home/pi/git/RunBme/script/restart_bme.sh
+Restart=always
+
+[Install]
+WantedBy=default.target

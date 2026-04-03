@@ -7,6 +7,9 @@ import socket #get the socket library
 import ast  
 import SetupBME as S_BME
 import CreatePandas as C_Pandas
+import platform
+import datetime as dt
+import os
 
 
 class MyServer(object):
@@ -15,7 +18,19 @@ class MyServer(object):
     def __init__(self, host='localhost', port=5000):
         
 
+
+
         # get configuration file
+        if platform.system() == 'Darwin':
+            config_file = '/Users/'+os.getlogin()+'/git/RunBme/config/BME280.json'
+                 
+        elif platform.system() == 'Linux':
+            config_file = '/home/'+os.getlogin()+'/git/RunBme/config/BME280.json'
+        else:
+            print('unknown system, exiting')
+            exit(1) 
+
+
         self.config = S_BME.SetupBME()
         self.config.get_config()
 

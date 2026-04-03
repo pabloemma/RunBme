@@ -30,6 +30,7 @@ class MyServer(object):
         self.host = self.config.server_ip
         self.port = self.config.server_port
         self.DEBUG = self.config.DEBUG
+        self.altitude = self.config.altitude
 
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.sock.bind((self.host, self.port))
@@ -49,7 +50,7 @@ class MyServer(object):
                 self.mydata = ast.literal_eval(data)
                 if(self.DEBUG):
                     print(f"Evaluated data: {self.mydata}")
-                    self.pandas_ak.AddData(self.mydata) 
+                self.pandas_ak.AddData(self.mydata) 
 
                     
             except (ValueError, SyntaxError):

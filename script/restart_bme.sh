@@ -1,4 +1,4 @@
 source /home/pi/activate_venv.sh
 cd /home/pi/git/RunBme/src
-python3 BME280.py
+python3 BME280_control.py
 

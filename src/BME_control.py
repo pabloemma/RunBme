@@ -5,11 +5,26 @@
 import time
 import MyClient as MY
 import ReadBme as RB
-
+import SetupBME as S_BME
+import platform
 class BMEControl(object):
-    def __init__(self,host = '192.168.3.150', port = 9378,sleep_time = None):
-        self.host = host
-        self.port = port
+    def __init__(self,host = None, port = None,sleep_time = None):
+
+                # get configuration file
+        if platform.system() == 'Darwin':
+            config_file = '/Users/'+os.getlogin()+'/git/RunBme/config/BME280.json'
+        elif platform.system() == 'Linux':
+            config_file = '/home/'+os.getlogin()+'/git/RunBme/config/BME280.json'
+        else:
+            print('unknown system, exiting')
+            exit(1) 
+
+
+        self.config = S_BME.SetupBME(config_file=config_file)
+        self.config.get_config()
+
+        self.host = self.config.host
+        self.port = self.config.port
 
         self.bme = RB.ReadBme()
         self.client = MY.MyClient(host=self.host)

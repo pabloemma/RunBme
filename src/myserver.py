@@ -23,7 +23,7 @@ class MyServer(object):
         # get configuration file
         if platform.system() == 'Darwin':
             config_file = '/Users/'+os.getlogin()+'/git/RunBme/config/BME280.json'
-                 
+            output_dir = '/Users/'+os.getlogin()+'/git/RunBme/data/'   
         elif platform.system() == 'Linux':
             config_file = '/home/'+os.getlogin()+'/git/RunBme/config/BME280.json'
         else:

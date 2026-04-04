@@ -13,7 +13,18 @@ class BMEControl(object):
 
         self.bme = RB.ReadBme()
         self.client = MY.MyClient(host=self.host)
-        self.client.connect()#setup connection to server
+        self.time_wait = 60
+        counter_init = 0
+        try:
+            self.client.connect()#setup connection to server
+            counter_init 
+        except:
+            print('Failed to connect to server try again in' + str(self.time_wait) + 'seconds')
+            time.sleep
+            counter_init += 1
+            if counter_init > 10:
+                print('Failed to connect to server after 10 tries, exiting')
+                exit(1)
 
         if sleep_time == None:
             self.sleep_time = 60
@@ -21,10 +32,23 @@ class BMEControl(object):
 
     def run(self):
         while True:
+            counter = 0
             data = self.bme.read_short()
             #print(data)
             #self.client.send('happy hour')
-            self.client.connect()
+            try:
+                self.client.connect()
+                counter = 0
+            except:
+
+                print('Failed to connect to server try again in' + str(self.time_wait) + 'seconds')
+                time.sleep(self.time_wait)
+                counter += 1
+                if counter > 10:
+                    print('Failed to connect to server after 10 tries, exiting')
+                    exit(1) 
+                continue
+
             self.client.send(str(data))
             # Send data to server
             time.sleep(self.sleep_time)

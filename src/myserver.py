@@ -31,7 +31,7 @@ class MyServer(object):
             exit(1) 
 
 
-        self.config = S_BME.SetupBME()
+        self.config = S_BME.SetupBME(config_file=config_file)
         self.config.get_config()
 
         #setup Pandas

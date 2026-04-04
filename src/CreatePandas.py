@@ -28,6 +28,7 @@ class MyPandas(object):
             print('output directory missing, exiting')           
             sys.exit(1)
         else:
+            print('output directory is ', output_dir)
             self.output_dir = output_dir
 
     

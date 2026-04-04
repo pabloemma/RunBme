@@ -22,7 +22,7 @@ class MyServer(object):
         if host == 'localhost':
             self.host = self.GetMyIp()
 
-            
+
         # get configuration file
         if platform.system() == 'Darwin':
             config_file = '/Users/'+os.getlogin()+'/git/RunBme/config/BME280.json'
@@ -45,7 +45,7 @@ class MyServer(object):
 
                                
         
-        self.host = self.config.server_ip
+        #self.host = self.config.server_ip --- IGNORE ---
         self.port = self.config.server_port
         self.DEBUG = self.config.DEBUG
         self.altitude = self.config.altitude

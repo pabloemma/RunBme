@@ -7,6 +7,7 @@ import MyClient as MY
 import ReadBme as RB
 import SetupBME as S_BME
 import platform
+import os
 class BMEControl(object):
     def __init__(self,host = None, port = None,sleep_time = None):
 

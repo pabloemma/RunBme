@@ -6,4 +6,4 @@ ExecStart=/home/pi/git/RunBme/script/restart_bme.sh
 Restart=always
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target

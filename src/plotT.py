@@ -33,9 +33,10 @@ temp3 = data['temperature']*1.8+32
 #temp.plot()
 #temp.plot(ax=ax,marker='+',color='green',linestyle='None')
 temp.plot(ax=ax,color='green',linestyle='--',label ='temperature in C')
-temp1.plot(ax=ax,color='red',linestyle='--',lablel='pressure in hPa divided by 30')
-temp2.plot(ax=ax,color='blue',linestyle='--')
+temp1.plot(ax=ax,color='red',linestyle='--',label='pressure in hPa divided by 30')
+temp2.plot(ax=ax,color='blue',linestyle='--',label='humidity in %')
 temp3.plot(ax=ax,color='black',linestyle='--', label ='temperature in F') 
+#temp3.plot(ax=ax,color='black', label ='temperature in F') 
 ax.legend(loc='upper left')                     
 
 

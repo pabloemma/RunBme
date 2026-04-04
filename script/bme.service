@@ -3,7 +3,7 @@ Description=BME control
 
 [Service]
 ExecStart=/home/pi/git/RunBme/script/restart_bme.sh
-Restart=always
+#Restart=always
 
 [Install]
 WantedBy=multi-user.target

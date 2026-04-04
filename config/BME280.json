@@ -3,7 +3,7 @@
         "column_names" : "time,temperature,humidity,pressure,altitude",
         "output_dir"    : "/Users/klein/git/RunBme/data/",
         "frequency"     : "10",
-        "DEBUG"        : "True",
+        "DEBUG"        : "False",
         "altitude"  : 255
 
 

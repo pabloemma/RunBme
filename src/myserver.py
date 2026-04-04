@@ -26,9 +26,10 @@ class MyServer(object):
         # get configuration file
         if platform.system() == 'Darwin':
             config_file = '/Users/'+os.getlogin()+'/git/RunBme/config/BME280.json'
-            output_dir = '/Users/'+os.getlogin()+'/git/RunBme/data/'   
+            my_output_dir = '/Users/'+os.getlogin()+'/git/RunBme/data/'   
         elif platform.system() == 'Linux':
             config_file = '/home/'+os.getlogin()+'/git/RunBme/config/BME280.json'
+            my_output_dir = '/home/'+os.getlogin()+'/git/RunBme/data/'   
         else:
             print('unknown system, exiting')
             exit(1) 
@@ -38,7 +39,7 @@ class MyServer(object):
         self.config.get_config()
 
         #setup Pandas
-        self.pandas_ak = C_Pandas.MyPandas(column_names = self.config.column_names, output_dir = self.config.output_dir)
+        self.pandas_ak = C_Pandas.MyPandas(column_names = self.config.column_names, output_dir = my_output_dir)
         self.pandas_ak.CreateFileName()
         self.pandas_ak.CreateFrame()
 

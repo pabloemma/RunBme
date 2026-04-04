@@ -20,7 +20,7 @@ class MyServer(object):
         
 
         if host == 'localhost':
-            self.host = self.GetMyIp(self):
+            self.host = self.GetMyIp(self)
 
         # get configuration file
         if platform.system() == 'Darwin':

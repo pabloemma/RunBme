@@ -22,7 +22,7 @@ if mydate == 'Today':
 else:
     temp = 'Temperature_'+mydate+'_.csv'
 myfile =str(Path.home())+'/scratch/'+temp
-myfile = '/Users/klein/git/RunBme/data/BME280_2026-04-03_.csv'
+myfile = '/Users/klein/git/RunBme/data/BME280_2026-04-04_.csv'
 data = pd.read_csv(myfile,index_col=0,parse_dates=True)
 #temp = data['temperature']*1.8+32
 temp = data['temperature']

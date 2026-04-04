@@ -10,6 +10,7 @@ import CreatePandas as C_Pandas
 import platform
 import datetime as dt
 import os
+import subprocess
 
 
 class MyServer(object):
@@ -18,7 +19,8 @@ class MyServer(object):
     def __init__(self, host='localhost', port=5000):
         
 
-
+        if host == 'localhost':
+            self.host = self.GetMyIp(self):
 
         # get configuration file
         if platform.system() == 'Darwin':
@@ -74,7 +76,16 @@ class MyServer(object):
 
             conn.close()
 
+    def GetMyIp(self):
+        y = subprocess.run(['/usr/bin/hostname', '-I'], capture_output=True)
+        ipAddrs = y.stdout.split()
+        ipv4 = ipAddrs[0]
+        print(f"My IP address is: {ipv4.decode('utf-8')}")
+        return ipv4.decode('utf-8')
+    
+        
+
 if __name__ == "__main__":
     host = socket.gethostname()
-    server = MyServer(host='192.168.3.150', port=9378)
+    server = MyServer(port=9378)
     server.start()

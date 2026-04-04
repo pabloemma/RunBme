@@ -24,8 +24,9 @@ class BMEControl(object):
         self.config = S_BME.SetupBME(config_file=config_file)
         self.config.get_config()
 
-        self.host = self.config.host
-        self.port = self.config.port
+        self.host = self.config.server_ip
+        self.port = self.config.server_port
+        self.DEBUG = self.config.DEBUG
 
         self.bme = RB.ReadBme()
         self.client = MY.MyClient(host=self.host)

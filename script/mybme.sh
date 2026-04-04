@@ -12,7 +12,7 @@ else
 #./update_speedtest
 #cd ~
 /home/pi/activate_venv.sh
-python3 -u /home/pi/git/RunBme/src/BME_control.py.py  > /home/pi/BME_control.log 2>> /home/pi/BME_control_restart_error.log &
+python3 -u /home/pi/git/RunBme/src/BME_control.py  > /home/pi/BME_control.log 2>> /home/pi/BME_control_restart_error.log &
 
 
 echo "Starting the process";

@@ -3,6 +3,21 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from pathlib import Path
 import sys
+import platform
+import os
+import getpass
+
+
+       # get configuration file
+if platform.system() == 'Darwin':
+    my_output_dir = '/Users/'+getpass.getuser()+'/git/RunBme/data/'   #use getpass because of visual code issue on mac
+elif platform.system() == 'Linux':
+    my_output_dir = '/home/'+os.getlogin()+'/git/RunBme/data/'   
+else:
+    print('unknown system, exiting')
+    exit(1) 
+
+
 
 #print(sys.argv[0])
 if(len(sys.argv) ==2):
@@ -18,11 +33,12 @@ ax = fig.add_subplot(1,1,1)
 if mydate == 'Today':
     a=dt.datetime.now()
     b=dt.datetime.strftime(a,"%Y-%m-%d")
-    temp= 'Temperature_'+b+'_.csv'
+    temp= 'BME280_'+b+'_.csv'
 else:
-    temp = 'Temperature_'+mydate+'_.csv'
-myfile =str(Path.home())+'/scratch/'+temp
-myfile = '/Users/klein/git/RunBme/data/BME280_2026-04-04_.csv'
+    temp = 'BME280_'+mydate+'_.csv'
+#myfile =str(Path.home())+'/scratch/'+temp
+myfile = my_output_dir + temp
+#myfile = '/home/klein/git/RunBme/data/BME280_2026-04-04_.csv'
 data = pd.read_csv(myfile,index_col=0,parse_dates=True)
 #temp = data['temperature']*1.8+32
 temp = data['temperature']

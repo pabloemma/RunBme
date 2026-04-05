@@ -26,8 +26,8 @@ class MyServer(object):
 
         # get configuration file
         if platform.system() == 'Darwin':
-            config_file = '/Users/'+os.getlogin()+'/git/RunBme/config/BME280.json'
-            my_output_dir = '/Users/'+os.getlogin()+'/git/RunBme/data/'   
+            config_file = '/Users/'+getpass.getuser()+'/git/RunBme/config/BME280.json'
+            my_output_dir = '/Users/'+getpass.getuser()+'/git/RunBme/data/'   
         elif platform.system() == 'Linux':
             config_file = '/home/'+os.getlogin()+'/git/RunBme/config/BME280.json'
             my_output_dir = '/home/'+os.getlogin()+'/git/RunBme/data/'   
@@ -47,7 +47,7 @@ class MyServer(object):
 
                                
         
-        #self.host = self.config.server_ip --- IGNORE ---
+        self.host = self.config.server_ip #--- IGNORE ---
         self.port = self.config.server_port
         self.DEBUG = self.config.DEBUG
         self.altitude = self.config.altitude
@@ -89,6 +89,6 @@ class MyServer(object):
         
 
 if __name__ == "__main__":
-    host = socket.gethostname()
-    server = MyServer(port=9378)
+    #host = socket.gethostname()
+    server = MyServer(host ='192.168.3.150', port=9378)
     server.start()

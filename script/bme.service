@@ -1,9 +1,14 @@
 [Unit]
-Description=BME control
+Description=RunBME control
+After=network.targetStart
+StartLimitItervalSec=0
 
 [Service]
-ExecStart=/home/pi/git/RunBme/script/restart_bme.sh
-#Restart=always
+ExecStart=/home/pi/git/RunBme/script/mybme.sh
+Restart=always
+RestartSec=1
+User=pi
+
 
 [Install]
 WantedBy=multi-user.target

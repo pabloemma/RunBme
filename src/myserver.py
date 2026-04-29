@@ -17,7 +17,7 @@ import getpass
 class MyServer(object):
 
 
-    def __init__(self, host='localhost', port=5000, config_file = None):
+    def __init__(self, host='localhost', port=5000, config_file = None, my_output_dir = None):
         
 
         if host == 'localhost':
@@ -38,6 +38,8 @@ class MyServer(object):
 
         self.config = S_BME.SetupBME(config_file=config_file)
         self.config.get_config()
+
+
 
         #setup Pandas
         self.pandas_ak = C_Pandas.MyPandas(column_names = self.config.column_names, output_dir = my_output_dir)
@@ -91,5 +93,6 @@ class MyServer(object):
 if __name__ == "__main__":
     #host = socket.gethostname()
     config_file = '/home/klein/git/RunBme/config/BME280.json'
-    server = MyServer(host ='192.168.3.151', port=9378,config_file=config_file)
+    my_output_dir = '/home/klein/git/RunBme/data/'
+    server = MyServer(host ='192.168.3.151', port=9378,config_file=config_file, my_output_dir=my_output_dir)
     server.start()

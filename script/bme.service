@@ -4,7 +4,7 @@ After=network.targetStart
 StartLimitItervalSec=0
 
 [Service]
-ExecStart=/home/pi/git/RunBme/script/mybme.sh
+ExecStart=/home/pi/git/RunBme/myenv/bin/python /home/pi/git/RunBme/src/BME_control.py  > /home/pi/BME_control.log 2>> /home/pi/BME_control_restart_error.log &
 Restart=always
 RestartSec=20
 User=pi

@@ -4,7 +4,7 @@ After=network.targetStart
 StartLimitItervalSec=0
 
 [Service]
-ExecStart=/home/pi/git/RunBme/myenv/bin/python /home/pi/git/RunBme/src/myserver.py
+ExecStart=/home/klein/git/RunBme/myenv/bin/python /home/klein/git/RunBme/src/myserver.py
 Restart=always
 RestartSec=20
 User=klein

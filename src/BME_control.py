@@ -9,16 +9,18 @@ import SetupBME as S_BME
 import platform
 import os
 class BMEControl(object):
-    def __init__(self,host = None, port = None,sleep_time = None):
+    def __init__(self,host = None, port = None,sleep_time = None,config_file = None):
 
+
+        if(config_file == None):
                 # get configuration file
-        if platform.system() == 'Darwin':
-            config_file = '/Users/'+os.getlogin()+'/git/RunBme/config/BME280.json'
-        elif platform.system() == 'Linux':
-            config_file = '/home/'+os.getlogin()+'/git/RunBme/config/BME280.json'
-        else:
-            print('unknown system, exiting')
-            exit(1) 
+            if platform.system() == 'Darwin':
+                config_file = '/Users/'+os.getlogin()+'/git/RunBme/config/BME280.json'
+            elif platform.system() == 'Linux':
+                config_file = '/home/'+os.getlogin()+'/git/RunBme/config/BME280.json'
+            else:
+                print('unknown system, exiting')
+                exit(1) 
 
 
         self.config = S_BME.SetupBME(config_file=config_file)
@@ -73,7 +75,7 @@ class BMEControl(object):
 if  __name__ == "__main__":
     host = '192.168.3.150'
     port = 9378
-
-    bme_control = BMEControl(host=host, port=port)
+    config_file = '/home/pi/git/RunBme/config/BME280.json' # for systemd
+    bme_control = BMEControl(host=host, port=port,config_file=config_file)
                              
     bme_control.run()

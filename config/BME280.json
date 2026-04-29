@@ -1,7 +1,7 @@
 {
     "Control": {
         "column_names" : "time,temperature,humidity,pressure,altitude",
-        "output_dir"    : "/Users/klein/git/RunBme/data/",
+        "output_dir"    : "/home/klein/git/RunBme/data/",
         "frequency"     : "10",
         "DEBUG"        : "False",
         "altitude"  : 255

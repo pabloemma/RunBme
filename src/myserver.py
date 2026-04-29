@@ -17,23 +17,23 @@ import getpass
 class MyServer(object):
 
 
-    def __init__(self, host='localhost', port=5000):
+    def __init__(self, host='localhost', port=5000, config_file = None):
         
 
         if host == 'localhost':
             self.host = self.GetMyIp()
 
-
+        if config_file == None:
         # get configuration file
-        if platform.system() == 'Darwin':
-            config_file = '/Users/'+getpass.getuser()+'/git/RunBme/config/BME280.json'
-            my_output_dir = '/Users/'+getpass.getuser()+'/git/RunBme/data/'   
-        elif platform.system() == 'Linux':
-            config_file = '/home/'+os.getlogin()+'/git/RunBme/config/BME280.json'
-            my_output_dir = '/home/'+os.getlogin()+'/git/RunBme/data/'   
-        else:
-            print('unknown system, exiting')
-            exit(1) 
+            if platform.system() == 'Darwin':
+                config_file = '/Users/'+getpass.getuser()+'/git/RunBme/config/BME280.json'
+                my_output_dir = '/Users/'+getpass.getuser()+'/git/RunBme/data/'   
+            elif platform.system() == 'Linux':
+                config_file = '/home/'+os.getlogin()+'/git/RunBme/config/BME280.json'
+                my_output_dir = '/home/'+os.getlogin()+'/git/RunBme/data/'   
+            else:
+                print('unknown system, exiting')
+                exit(1) 
 
 
         self.config = S_BME.SetupBME(config_file=config_file)
@@ -90,5 +90,6 @@ class MyServer(object):
 
 if __name__ == "__main__":
     #host = socket.gethostname()
+    config_file = '/home/klein/git/RunBme/config/BME280.json'
     server = MyServer(host ='192.168.3.150', port=9378)
     server.start()

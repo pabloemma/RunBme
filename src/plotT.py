@@ -1,6 +1,6 @@
 import datetime as dt
 import pandas as pd
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt,mpld3
 from pathlib import Path
 import sys
 import platform
@@ -26,9 +26,9 @@ if(len(sys.argv) ==2):
 else:
     mydate = 'Today'
 
-fig = plt.figure()
-ax = fig.add_subplot(1,1,1)
-#mydate = '2024-01-12'
+myfig = plt.figure()
+ax = myfig.add_subplot(1,1,1)
+#mydate = '2026-04-06'
 #mydate = 'Today'        
 if mydate == 'Today':
     a=dt.datetime.now()
@@ -38,6 +38,7 @@ else:
     temp = 'BME280_'+mydate+'_.csv'
 #myfile =str(Path.home())+'/scratch/'+temp
 myfile = my_output_dir + temp
+myhtml_file =myfile.strip('_.csv')+'.html'
 #myfile = '/home/klein/git/RunBme/data/BME280_2026-04-04_.csv'
 data = pd.read_csv(myfile,index_col=0,parse_dates=True)
 #temp = data['temperature']*1.8+32
@@ -71,6 +72,10 @@ ax.grid(True)
 
 
 plt.show()
+
+#mpld3.show(myfig)
+mpld3.save_html(myfig,myhtml_file)
+
 
 
 

@@ -73,7 +73,7 @@ class BMEControl(object):
             time.sleep(self.sleep_time)
 
 if  __name__ == "__main__":
-    host = '192.168.3.150'
+    host = '192.168.3.151'
     port = 9378
     config_file = '/home/pi/git/RunBme/config/BME280.json' # for systemd
     bme_control = BMEControl(host=host, port=port,config_file=config_file)

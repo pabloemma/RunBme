@@ -26,9 +26,12 @@ if(len(sys.argv) ==2):
 else:
     mydate = 'Today'
 
-myfig = plt.figure()
+width=7.
+height =4.
+
+myfig = plt.figure(figsize=(width,height))
 ax = myfig.add_subplot(1,1,1)
-#mydate = '2026-04-06'
+mydate = '2026-04-06'
 #mydate = 'Today'        
 if mydate == 'Today':
     a=dt.datetime.now()
@@ -74,6 +77,7 @@ ax.grid(True)
 plt.show()
 
 #mpld3.show(myfig)
+myfig.set_size_inches(3., 2.) # for webplot
 mpld3.save_html(myfig,myhtml_file)
 
 

@@ -1,7 +1,7 @@
 [Unit]
 Description=RunBME_server  control
-After=network.targetStart
-StartLimitItervalSec=0
+#After=network.targetStart
+StartLimitIntervalSec=0
 
 [Service]
 ExecStart=/home/klein/git/RunBme/myenv/bin/python /home/klein/git/RunBme/src/myserver.py
